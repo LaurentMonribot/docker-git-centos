@@ -18,7 +18,7 @@ RUN yum -y update &&\
     cd git-2.17.0 &&\
     autoconf &&\
     ./configure --prefix=/usr &&\
-    make all
+    make all &&\
     make install
 CMD ["git", "--version"]    
 
