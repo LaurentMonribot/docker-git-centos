@@ -1,0 +1,23 @@
+ 
+FROM centos:latest
+
+
+MAINTAINER LMO lmo@lmo.com
+
+WORKDIR gitserver
+RUN yum -y update &&\
+    yum -y install wget &&\
+    yum -y install dh-autoreconf curl-devel expat-devel gettext-devel openssl-devel perl-devel zlib-devel &&\
+    yum -y install asciidoc xmlto docbook2X getopt &&\
+    ln -s /usr/bin/db2x_docbook2texi /usr/bin/docbook2x-texi &&\
+    yum -y install gcc &&\
+    yum -y install make &&\
+    yum -y install autoconf &&\
+    wget https://github.com/git/git/archive/v2.17.0.tar.gz &&\
+    tar -zxvf v2.17.0.tar.gz &&\
+    cd git-2.17.0 &&\
+    autoconf &&\
+    ./configure --prefix=/usr &&\
+    make all
+CMD ["git", "--version"]    
+
