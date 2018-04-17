@@ -19,5 +19,6 @@ RUN yum -y update &&\
     autoconf &&\
     ./configure --prefix=/usr &&\
     make all
+    make install
 CMD ["git", "--version"]    
 
